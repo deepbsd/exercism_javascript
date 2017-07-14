@@ -40,6 +40,38 @@ function FoodChain() {
                  var why = bridge(this.versenum);
                  return repeat+this.food+'.'+'\nImagine that, to swallow a cat!\n'+why;
                }
+        },
+        5: {
+               versenum: 5,
+               food: 'dog',
+               verse: function(){
+                 var why = bridge(this.versenum);
+                 return repeat+this.food+'.'+'\nWhat a hog, to swallow a dog!\n'+why;
+               }
+        },
+        6: {
+               versenum: 6,
+               food: 'goat',
+               verse: function(){
+                 var why = bridge(this.versenum);
+                 return repeat+this.food+'.'+'\nJust opened her throat and swallowed a goat!\n'+why;
+               }
+        },
+        7: {
+               versenum: 7,
+               food: 'cow',
+               verse: function(){
+                 var why = bridge(this.versenum);
+                 return repeat+this.food+'.'+'\nI don\'t know how she swallowed a cow!\n'+why;
+               }
+        },
+        8: {
+               versenum: 8,
+               food: 'horse',
+               verse: function(){
+                 var why = bridge(this.versenum);
+                 return repeat+this.food+'.'+'\nShe\'s dead, of course!\n';
+               }
         }
   }
 
