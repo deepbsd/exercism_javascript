@@ -10,7 +10,7 @@ function FoodChain() {
   var theSong = {
 
         1: {
-              verse: 1, 
+              versenum: 1, 
               food: 'fly',
               verse:  function() {
                 return repeat+this.food+'.'+'\nI don\'t know why she swallwed the fly. Perhaps she\'ll die.\n';
@@ -18,12 +18,28 @@ function FoodChain() {
               
         },
         2: {
-              verse: 2,
+              versenum: 2,
               food: 'spider',
               verse: function() {
-                var why = bridge(this.verse);
+                var why = bridge(this.versenum);
                 return repeat+this.food+'.'+'\nIt wriggled and jiggled and tickled inside her.\n'+why;
               }
+        },
+        3: {
+               versenum: 3,
+               food: 'bird',
+               verse: function(){
+                 var why = bridge(this.versenum);
+                 return repeat+this.food+'.'+'\nHow absurd to swallow a bird!\n'+why;
+               }
+        },
+        4: {
+               versenum: 4,
+               food: 'cat',
+               verse: function(){
+                 var why = bridge(this.versenum);
+                 return repeat+this.food+'.'+'\nImagine that, to swallow a cat!\n'+why;
+               }
         }
   }
 
@@ -31,8 +47,8 @@ function FoodChain() {
         //need to repeat this until we get back to the fly...
         var current_verse_num = verse;
         var bridge_string = '';
-        for (var v = current_verse_num; v >= 1; v--) {
-          bridge_string = 'She swallowed the '+theSong[verse].food+' to catch the '+theSong[verse-1].food ;
+        for (var v = current_verse_num; v >= 2; v--) {
+          bridge_string += '\nShe swallowed the '+theSong[v].food+' to catch the '+theSong[v-1].food+'.' ;
         }
         return bridge_string;
   }
