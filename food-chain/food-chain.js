@@ -22,7 +22,7 @@ function FoodChain() {
               food: 'spider',
               verse: function() {
                 var why = bridge(this.versenum);
-                return repeat+this.food+'.'+'\nIt wriggled and jiggled and tickled inside her.\n'+why;
+                return repeat+this.food+'.'+'\nIt wriggled and jiggled and tickled inside her '+why;
               }
         },
         3: {
@@ -80,7 +80,9 @@ function FoodChain() {
         var current_verse_num = verse;
         var bridge_string = '';
         for (var v = current_verse_num; v >= 2; v--) {
-          bridge_string += '\nShe swallowed the '+theSong[v].food+' to catch the '+theSong[v-1].food+'.' ;
+          bridge_string += ' She swallowed the '+theSong[v].food+' to catch the '+theSong[v-1].food+'.' ;
+          if (v === 3) { bridge_string += " that wriggled and jiggled and tickled inside her.\n"; }
+          if (v === 2) { bridge_string += " I don't know why she swalled the fly. Perhaps she\'ll die.\n"; }
         }
         return bridge_string;
   }
