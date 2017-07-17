@@ -1,21 +1,20 @@
+  // Originally I had simply used each verse in an array.  That worked,
+  // but it just seemed not very programmatic, if that's a word.  Since
+  // then, I've switched to what you see below, which is a lot of lines
+  // for a little program, but I kind of like it for now...
+
 function FoodChain() {
 
-  // This works but there is a lot of repetition here.  I should alter this...
-  // I think I'll change it to be more functional and modular.  But it's not done yet!
-  // I was thinking of something like:
-
   var repeat = 'I know an old lady who swallowed a ';
-
 
   var theSong = {
 
         1: {
-              versenum: 1, 
+              versenum: 1,
               food: 'fly',
               verse:  function() {
                 return repeat+this.food+'.'+'\nI don\'t know why she swallowed the fly. Perhaps she\'ll die.\n';
               }
-              
         },
         2: {
               versenum: 2,
@@ -98,7 +97,6 @@ function FoodChain() {
         for (var v=start; v <= end; v++) {
                 lyrics += verse(v)+'\n';
         }
-
         return lyrics;
   }
 
