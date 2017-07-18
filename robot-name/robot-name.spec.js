@@ -50,7 +50,7 @@ describe('Robot', function() {
   });
 
   //This test is optional.
-  xit('there can be lots of robots with different names each', function() {
+  it('there can be lots of robots with different names each', function() {
     var i,
         numRobots = 10000,
         usedNames = {};

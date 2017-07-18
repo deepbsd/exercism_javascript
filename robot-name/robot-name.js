@@ -1,7 +1,11 @@
+// Moved the db into global space (not best practice!)
+// in order to satisfy the last test.
+var db = [];
+
 class Robot {
 
   constructor(){
-    this.db = [];
+    //this.db = [];
     this.name = this.newname();
   }
 
@@ -15,12 +19,11 @@ class Robot {
       for (var n = 0; n < 3; n++){
         newname += nums[Math.floor(Math.random()*nums.length)];
       }
-      if (this.db.indexOf(newname) === -1){
-        this.db.push(newname)
+      if (db.indexOf(newname) === -1){
+        db.push(newname)
         return newname;
-      } else {
-        return this.newname();
       }
+      return this.newname();  // Keep recycling until the name is new...
   }
 
   name(){
