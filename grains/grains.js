@@ -1,9 +1,10 @@
-// This program asumes you have a chessboard (with 64 squares) and
+// This program assumes you have a chessboard (with 64 squares) and
 // that you place grains of rice on each successive square up to the
 // 64th square.  Square 1 gets 1 grain of rice, square 2 gets double that
 // amount, square 3 gets double that last amount, and so on.
-// So each square is actually 2 raised to the power of the previous square number.
-// Square 1 is 2**0, square 2 is 2**1, square 3 is 2**2 and so on.
+// So each square is actually 2 raised to the power of the previous
+// square number. Square 1 gets 2**0 grains, square 2 gets 2**1 grains,
+// square 3 gets 2**2 grains and so on.
 
 // Since JS has trouble representing large numbers as integers, we
 // use the big integer library.
