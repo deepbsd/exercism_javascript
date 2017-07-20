@@ -1,31 +1,30 @@
+// I guess this is rather verbose.  Maybe I'll righten it up sometime.
+
 class Triangle {
 
   constructor (a, b, c) {
-    this.side_a = a;
-    this.side_b = b;
-    this.side_c = c;
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 
-  //this.isTriangle = isTriangle(this.a, this.b, this.c);
-  // if (!(this.isTriangle)) {
-  //   throw new Error('This is not a triangle.');
-  // }
-
-  isTriangle(a,b,c){
-    if ((isPos(a,b,c)) && (sidesCorrect(a,b,c))) { return true; }
+  isPos(){
+    if ((this.a>0) && (this.b>0) && (this.c>0)) { return true; }
     return false;
   }
-  isPos(a,b,c){
-    if ((a>0) && (b>0) && (c>0)) return true;
+  sidesCorrect(){
+    if ( ((this.a+this.b)>this.c) && ((this.a+this.c)>this.b) && ((this.b+this.c)>this.a) ) { return true; }
     return false;
   }
-  sidesCorrect(a,b,c){
-    if ( ((a+b)>c) || ((a+c)>b) || ((b+c)>a) ) return true;
-    return false;
-  }
-  kind(a,b,c){
-      if ((a===c) && (a===b) && (b===c)) return 'equilaterial';
-      if ((a===c) || (a===b) || (b===c)) return 'isosceles';
-      else  return 'scalene';
+  kind(){
+    // I think this check should be inside the constructor, but, oh well...
+    if ((!this.isPos()) || (!this.sidesCorrect())){
+      throw new Error('This is not a triangle!');
+    }
+    if ((this.a===this.c) && (this.a===this.b) && (this.b===this.c)) { return 'equilateral'; }
+    if ((this.a===this.c) || (this.a===this.b) || (this.b===this.c)) { return 'isosceles'; }
+    else  return 'scalene';
   }
 }
+
+module.exports = Triangle;
