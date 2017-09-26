@@ -4,9 +4,9 @@ module.exports = function(userKey=false) {
   this.key = userKey || generateKey(alpha);
 
 
-	// if ( !(/^[a..z]+$/.test(this.key)) ) {
-	// 	throw new Error('Bad key');
-	// }
+	if ( !(/^[a..z]+$/.test(this.key)) ) {
+		throw new Error('Bad key');
+	}
 
 
 	function generateKey(alpha){
