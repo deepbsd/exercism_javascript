@@ -25,19 +25,19 @@ describe('Random key cipher', function () {
 });
 
 describe('Incorrect key cipher', function () {
-  xit('throws an error with an all caps key', function () {
+  it('throws an error with an all caps key', function () {
     expect( function () {
       new Cipher('ABCDEF');
     }).toThrow(new Error('Bad key'));
   });
 
-  xit('throws an error with a numeric key', function () {
+  it('throws an error with a numeric key', function () {
     expect( function () {
       new Cipher('12345');
     }).toThrow(new Error('Bad key'));
   });
 
-  xit('throws an error with an empty key', function () {
+  it('throws an error with an empty key', function () {
     expect( function () {
       new Cipher('');
     }).toThrow(new Error('Bad key'));
@@ -56,20 +56,20 @@ describe('Substitution cipher', function () {
     expect(cipher.encode('aaaaaaaaaa')).toEqual('abcdefghij');
   });
 
-  xit('can decode', function () {
+  it('can decode', function () {
     expect(cipher.decode('abcdefghij')).toEqual('aaaaaaaaaa');
   });
 
-  xit('is reversible', function () {
+  it('is reversible', function () {
     expect(cipher.decode(cipher.encode('abcdefghij'))).toEqual('abcdefghij');
   });
 
-  xit(': double shift encode', function () {
+  it(': double shift encode', function () {
     expect(new Cipher('iamapandabear').encode('iamapandabear'))
       .toEqual('qayaeaagaciai');
   });
 
-  xit('can wrap', function () {
+  it('can wrap', function () {
     expect(cipher.encode('zzzzzzzzzz')).toEqual('zabcdefghi');
   });
 });

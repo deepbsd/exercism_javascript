@@ -1,12 +1,11 @@
 var Cipher = function(userKey=false) {
 
 	var alpha = 'abcdefghijklmnopqrstuvwxyz';
+
+	if ( !(/^[a-z]+$/.test(userKey))) {
+		throw Error('Bad key');
+	}
   this.key = userKey || generateKey(alpha);
-
-
-	// if ( !(/^[a..z]+$/.test(this.key)) ) {
-	// 	throw new Error('Bad key');
-	// }
 
 
 	function generateKey(alpha){
@@ -24,7 +23,7 @@ var Cipher = function(userKey=false) {
 		var result = [];
 		plaintext.split('').forEach(function(char, i){
 			var n = alpha.indexOf(char) + alpha.indexOf(key[i]);
-			if (n<0) { n -= 26 }
+			if (n>=26) { n -= 26 }
 			result.push(alpha[n])
 		})
 		return result.join('');
