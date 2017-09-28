@@ -1,4 +1,4 @@
-module.exports = function(userKey=false) {
+var Cipher = function(userKey=false) {
 
 	var alpha = 'abcdefghijklmnopqrstuvwxyz';
   this.key = userKey || generateKey(alpha);
@@ -19,23 +19,22 @@ module.exports = function(userKey=false) {
 		return output;
 	}
 
-	function encode(plaintext){
+	Cipher.prototype.encode = function(plaintext){
+		var key = this.key;
 		var result = [];
-		var count = 0;
-		plaintext.split('').forEach(function(char){
-			var n = alpha.indexOf(char) + alpha.indexOf(this.key[count]);
-			if (n<0) { n += 26 }
-			result = result.push(alpha[n])
-			count++;
+		plaintext.split('').forEach(function(char, i){
+			var n = alpha.indexOf(char) + alpha.indexOf(key[i]);
+			if (n<0) { n -= 26 }
+			result.push(alpha[n])
 		})
 		return result.join('');
 	}
 
-	function decode(ciphertext){
+	Cipher.prototype.decode = function(ciphertext){
+		var key = this.key;
 		var result = [];
-		var count = 0;
-		ciphertext.split('').forEach(function(char){
-			var n = alpha.indexOf(char) - alpha.indexOf(this.key[count]);
+		ciphertext.split('').forEach(function(char, i){
+			var n = alpha.indexOf(char) - alpha.indexOf(key[i]);
 			if (n<0) { n += 26 }
 			result.push(alpha[n]);
 		})
@@ -43,3 +42,5 @@ module.exports = function(userKey=false) {
 	}
 
 };
+
+module.exports = Cipher;
