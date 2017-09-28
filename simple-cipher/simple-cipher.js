@@ -7,7 +7,6 @@ var Cipher = function(userKey=false) {
 	}
   this.key = userKey || generateKey(alpha);
 
-
 	function generateKey(alpha){
 		var output = '';
 		for (var n=0; n<=100; n++){
