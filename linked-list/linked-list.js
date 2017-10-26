@@ -10,6 +10,48 @@ DoublyLinkedList.prototype = {
 		return this._length;
 	},
 
+	delete: function(data){
+		var count = 0;
+		var current = this._head;
+		while (count < this._length){
+			if (current.data == data){
+				var val = current.data;
+				this.remove(count);
+				return val;
+			} else {
+				current = current.next;
+				count++;
+			}
+		}
+	},
+
+	pop: function(){
+		var val = this._tail.data;
+		this.remove(this._length-1);
+		return val;
+	},
+
+	push: function(data){
+		//create a new item object and place data in it
+		var node = {
+			data: data,
+			next: null,
+			prev: null
+		};
+		//if no items in list...
+		if (this._length == 0){
+			this._head = node;
+			this._tail = node;
+		} else {
+			//attach to the tail node
+			this._tail.next = node;
+			node.prev = this._tail;
+			this._tail = node;
+		}
+		// update the length
+		this._length++;
+	},
+
 	remove: function(index){
 		//check for out-of-bounds values
 		if (index > -1 && index < this._length){
@@ -52,33 +94,6 @@ DoublyLinkedList.prototype = {
 			}
 		},
 
-	pop: function(){
-		var val = this._tail.data;
-		this.remove(this._length-1);
-		return val;
-	},
-
-	push: function(data){
-		//create a new item object and place data in it
-		var node = {
-			data: data,
-			next: null,
-			prev: null
-		};
-		//if no items in list...
-		if (this._length == 0){
-			this._head = node;
-			this._tail = node;
-		} else {
-			//attach to the tail node
-			this._tail.next = node;
-			node.prev = this._tail;
-			this._tail = node;
-		}
-		// update the length
-		this._length++;
-	},
-
 	shift: function(){
 		var val = this._head.data;
 		this.remove(0);
@@ -105,7 +120,6 @@ DoublyLinkedList.prototype = {
 		// update the length
 		this._length++;
 	}
-
 
 }
 
