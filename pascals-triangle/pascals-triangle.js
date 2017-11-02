@@ -20,7 +20,6 @@ Triangle.prototype.getLines = function(num){
 				} else {
 					arr2.push(arr[row-2][position]+arr[row-2][position-1])
 				}
-				
 			}
 			arr2.push(1)  // end row with a 1
 			arr.push(arr2)
