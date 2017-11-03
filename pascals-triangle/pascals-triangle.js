@@ -1,1 +1,1 @@
-pascals-triangle1.js
+pascals-triangle2.js
