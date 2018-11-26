@@ -14,12 +14,12 @@ SecretHandshake.prototype.commands = function () {
 
 
   while (num != 0) {
-      //console.log(`num: ${num}  num>>1: ${num>>1}  handshake: ${handshake}`)
+      console.log(`num: ${num}  num>>1: ${num>>1}  handshake: ${handshake}`)
       num = num >> 1;
       //handshake.push(arr.shift());
-      handshake = (count<4) ? [ arr.shift() ] : handshake.push(arr.shift()) ;
+      handshake = (count<4) ? [ ... handshake, arr.shift() ] : handshake.push(arr.shift()) ;
       count = (count>=4) ? 0 : count++ ;
-      //console.log("handshake: ", handshake )
+      console.log("handshake: ", handshake )
   }
 
 
