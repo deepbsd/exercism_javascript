@@ -1,6 +1,9 @@
 
 function SecretHandshake (num) {
     this.number = num;
+    if (typeof this.number !== 'number'){
+        throw new Error("Handshake must be a number");
+    }
 }
 
 SecretHandshake.prototype.commands = function () {
@@ -9,7 +12,6 @@ SecretHandshake.prototype.commands = function () {
   let num = this.number;
   let handshake = [];
 
-  
 
   while (num != 0) {
       //console.log(`num: ${num}  num>>1: ${num>>1}  handshake: ${handshake}`)
@@ -17,7 +19,7 @@ SecretHandshake.prototype.commands = function () {
       //handshake.push(arr.shift());
       handshake = (count<4) ? [ arr.shift() ] : handshake.push(arr.shift()) ;
       count = (count>=4) ? 0 : count++ ;
-      console.log("handshake: ", handshake )
+      //console.log("handshake: ", handshake )
   }
 
 
