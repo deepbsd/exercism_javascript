@@ -7,20 +7,25 @@ function SecretHandshake (num) {
 }
 
 SecretHandshake.prototype.commands = function () {
-  const arr = [ "wink", "double blink", "close your eyes", "jump" ];
+  let arr = [ "wink", "double blink", "close your eyes", "jump" ];
+  const replacementArr = [ "wink", "double blink", "close your eyes", "jump" ];
   let count = 0;
   let num = this.number;
   let handshake = [];
 
 
   while (num != 0) {
-      console.log(`num: ${num}  num>>1: ${num>>1}  handshake: ${handshake}`)
       num = num >> 1;
       //handshake.push(arr.shift());
-      handshake = (count<3) ? [ arr.shift() ] : handshake.push(arr.shift()) ;
-      if (count>3){ handshake = handshake.reverse() }
+      if (count>3){ 
+          arr = replacementArr;
+      } 
+      //handshake = (count<3) ? [ arr.shift() ] : handshake.push(arr.pop()) ;
+      handshake = (count<4) ? [ arr.shift() ] : [ ...handshake, arr.shift() ]
+      console.log(`num: ${this.number}  num>>1: ${num>>1} count: ${count}  handshake: ${handshake} ==>ARR: [${arr}]`)
+      count++;
       //count = (count>=4) ? 0 : count++ ;
-      count = (count<3) ? count++ : 0 ;
+      //count = (count<3) ? count++ : 0 ;
       //console.log("handshake: ", handshake )
   }
 
