@@ -17,12 +17,14 @@ SecretHandshake.prototype.commands = function () {
       console.log(`num: ${num}  num>>1: ${num>>1}  handshake: ${handshake}`)
       num = num >> 1;
       //handshake.push(arr.shift());
-      handshake = (count<4) ? [ arr.shift() ] : handshake.push(arr.shift()) ;
-      count = (count>=4) ? 0 : count++ ;
-      console.log("handshake: ", handshake )
+      handshake = (count<3) ? [ arr.shift() ] : handshake.push(arr.shift()) ;
+      if (count>3){ handshake = handshake.reverse() }
+      //count = (count>=4) ? 0 : count++ ;
+      count = (count<3) ? count++ : 0 ;
+      //console.log("handshake: ", handshake )
   }
 
-
+   
   return handshake;
 
 
