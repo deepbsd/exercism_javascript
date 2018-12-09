@@ -1,4 +1,3 @@
-
 function SecretHandshake (num) {
     this.number = num;
     if (typeof this.number !== 'number'){
@@ -17,8 +16,6 @@ SecretHandshake.prototype.commands = function () {
   // pretend 1,2,4,8,16 starts from left...
   reverseStr = binaryStr.split("").reverse().join("");
 
-  
-
   // start counting significant bits as if from right, but actually from left
   for (let c=0; c<reverseStr.length; c++){
       
@@ -30,6 +27,7 @@ SecretHandshake.prototype.commands = function () {
           if (arr[c]){
               handshake.unshift(arr[c])
           }else{
+              // start over from left of array
               handshake.unshift(arr[c%4])
           }
       }
@@ -37,6 +35,7 @@ SecretHandshake.prototype.commands = function () {
 
   // reverse order of operations if more than '10000'
   if (this.number > 16){ handshake.reverse(); }
+  //if (reverseStr[4]==='1'){ handshake.reverse(); }
 
   console.log(`NUM: ${num}  STR: ${binaryStr}  HANDSHAKE: ${handshake} `)
    
