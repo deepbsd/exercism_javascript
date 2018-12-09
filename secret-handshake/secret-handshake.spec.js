@@ -36,7 +36,7 @@ describe('Secret Handshake', function () {
     expect(handshake.commands()).toEqual(['jump', 'close your eyes', 'double blink', 'wink']);
   });
 
-  xit('text is an invalid secret handshake', function () {
+  it('text is an invalid secret handshake', function () {
     expect( function () {
       /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }]*/
       var ignoredHandshake = new SecretHandshake('piggies');
