@@ -16,21 +16,13 @@ SecretHandshake.prototype.commands = function () {
 
   // start counting significant bits as if from right, but actually from left
   for (let c=0; c<reverseStr.length; c++){
-      
-      // no duplicate commands
-      if (c>3){ handshake.pop(); }
 
       if (reverseStr[c] === '1'){ 
-          if (arr[c]){
-              handshake.unshift(arr[c])
-          }else{ handshake.unshift(arr[c%4]); }
+          if (arr[c]) handshake.unshift(arr[c])
       }
   }
 
-  // reverse order of operations if more than '10000'
-  if (this.number > 16){ handshake.reverse(); }
-
-  console.log(`NUM: ${num}  STR: ${binaryStr}  HANDSHAKE: ${handshake} `)
+  console.log(`NUM: ${num}  STR: ${binaryStr}  HANDSHAKE: ${handshake} `);
    
   return handshake;
 }
