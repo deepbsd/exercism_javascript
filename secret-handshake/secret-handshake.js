@@ -9,39 +9,42 @@ function SecretHandshake (num) {
 SecretHandshake.prototype.commands = function () {
   let arr = [ "wink", "double blink", "close your eyes", "jump" ];
 
-
-  // arr will get consumed.  replenish with replacment
-  const replacementArr = [ "wink", "double blink", "close your eyes", "jump" ];
-
-
   // use these variables
-  let count = 0;
   let num = this.number;
   let handshake = [];
 
+  let binaryStr = num.toString(2);
+  // pretend 1,2,4,8,16 starts from left...
+  reverseStr = binaryStr.split("").reverse().join("");
 
-  // Keep shifting bits until we hit zero
-  while (num != 0) {
-      num = num >> 1;
-      
-      // replenish arr as needed
-      if (count>3){ 
-          arr = replacementArr;
-      } 
-      
-      // Just one value in the answer until we get to '8', then start appending
-      handshake = (count<4) ? [ arr.shift() ] : [ ...handshake, arr.shift() ];
-      
-      // for debugging --- check the values
-      console.log(`###num: ${this.number}  num>>1: ${num>>1} count: ${count}  handshake: ${handshake} ==>ARR: [${arr}]`);
+  
 
-      // increment the count always
-      count++;
+  // start counting significant bits as if from right, but actually from left
+  for (let c=0; c<reverseStr.length; c++){
+
+      // If a number greater than '10000' in binary is passed in, reverse the order
+      if (c>3){ 
+          handshake.shift(c%4);
+          //handshake.shift();
+      }
+
+      if (reverseStr[c] === '1'){ 
+          if (arr[c]){
+              handshake.push(arr[c])
+          }else{
+              //arr.reverse()
+              handshake.push(arr[c%4])
+          }
+      }
+
+      //if (reverseStr[c] === '1' && c >= 5){ handshake = handshake.reverse(); }
   }
 
+  // reverse order of operations if more than '10000'
+  //if (this.number > 16){ handshake = handshake.reverse(); }
+
+  console.log(`NUM: ${num}  STR: ${binaryStr}  HANDSHAKE: ${handshake} `)
    
-  // If a number greater than '10000' in binary is passed in, reverse the order
-  if (this.number >= 16){ handshake = handshake.reverse(); }
   return handshake;
 
 

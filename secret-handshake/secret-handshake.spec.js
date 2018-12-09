@@ -26,17 +26,17 @@ describe('Secret Handshake', function () {
     expect(handshake.commands()).toEqual(['wink', 'double blink']);
   });
 
-  xit('10011 is double blink and wink', function () {
+  it('10011 is double blink and wink', function () {
     var handshake = new SecretHandshake(19);
     expect(handshake.commands()).toEqual(['double blink', 'wink']);
   });
 
-  xit('11111 is jump, close your eyes, double blink, and wink', function () {
+  it('11111 is jump, close your eyes, double blink, and wink', function () {
     var handshake = new SecretHandshake(31);
     expect(handshake.commands()).toEqual(['jump', 'close your eyes', 'double blink', 'wink']);
   });
 
-  it('text is an invalid secret handshake', function () {
+  xit('text is an invalid secret handshake', function () {
     expect( function () {
       /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "[iI]gnored" }]*/
       var ignoredHandshake = new SecretHandshake('piggies');
