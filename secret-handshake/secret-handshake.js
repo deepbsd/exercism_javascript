@@ -21,9 +21,6 @@ SecretHandshake.prototype.commands = function () {
           if (arr[c]) handshake.unshift(arr[c])
       }
   }
-
-  console.log(`NUM: ${num}  STR: ${binaryStr}  HANDSHAKE: ${handshake} `);
-   
   return handshake;
 }
 
