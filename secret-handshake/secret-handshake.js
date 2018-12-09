@@ -18,9 +18,10 @@ SecretHandshake.prototype.commands = function () {
   for (let c=0; c<reverseStr.length; c++){
 
       if (reverseStr[c] === '1'){ 
-          if (arr[c]) handshake.unshift(arr[c])
+          if (arr[c]) handshake.push(arr[c])
       }
   }
+  if (this.number >= 16) handshake.reverse();
   return handshake;
 }
 
