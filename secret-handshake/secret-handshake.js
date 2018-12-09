@@ -1,8 +1,6 @@
 function SecretHandshake (num) {
     this.number = num;
-    if (typeof this.number !== 'number'){
-        throw new Error("Handshake must be a number");
-    }
+    if (typeof this.number !== 'number') throw new Error("Handshake must be a number"); 
 }
 
 SecretHandshake.prototype.commands = function () {
@@ -16,10 +14,7 @@ SecretHandshake.prototype.commands = function () {
 
   // start counting significant bits as if from right, but actually from left
   for (let c=0; c<reverseStr.length; c++){
-
-      if (reverseStr[c] === '1'){ 
-          if (arr[c]) handshake.push(arr[c])
-      }
+      if (reverseStr[c] === '1' && arr[c]) handshake.push(arr[c]); 
   }
   if (this.number >= 16) handshake.reverse();
   return handshake;
