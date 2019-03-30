@@ -1,8 +1,7 @@
 
-const colors = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"];
+export const COLORS = ["black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"];
 
-function returnColorCode(color){
-    return colors.indexOf(color);
+export function colorCode(color){
+    return COLORS.indexOf(color);
 }
 
-module.exports = { COLORS: colors, colorCode: returnColorCode }
