@@ -3,15 +3,12 @@ export class HighScores {
 
     constructor(scoreArray){
     
-        let length = scoreArray.length;
-        let copyArr = [];
-        copyArr = copyArr.concat(scoreArray);
-    
-        this.sorted = copyArr.sort(function(a,b){return a-b});
+        const length = scoreArray.length;
+        const sorted = [...scoreArray].sort((a,b) => {return b-a});
         this.scores = scoreArray;
         this.latest = scoreArray[length-1];
-        this.personalBest = this.sorted[length-1];
-        this.personalTopThree = this.sorted.slice(-3,).reverse();
+        this.personalBest = sorted[0];
+        this.personalTopThree = sorted.slice(0,3);
     }
 }
 
