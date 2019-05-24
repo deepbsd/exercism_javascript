@@ -5,16 +5,15 @@ export const classify = (number) => {
    if (number === 1) return "deficient";    // edge case
 
    const factors = number => Array
-		.from(Array(number + 1), (_, i) => i)
+		.from(Array(Math.floor(number/2) + 1), (_, i) => i)
 		.filter(i => number % i === 0)
 		.filter(i => i !== number)  // remove number itself
 
     const sumOfFactors = factors(number).reduce((sum, factor) => sum + factor);
 	
-    const aliquot = (sumOfFactors === number) ? "perfect" 
+    return (sumOfFactors === number) ? "perfect" 
 				: (sumOfFactors > number) ?  "abundant" : "deficient";
 
-    return aliquot;
 }
 
 
