@@ -5,7 +5,7 @@ describe('Transpose', () => {
     expect(transpose([])).toEqual([]);
   });
 
-  xtest('two characters in a row', () => {
+  test('two characters in a row', () => {
     const input = ['A1'];
     const expected = ['A', '1'];
     expect(transpose(input)).toEqual(expected);
@@ -31,7 +31,7 @@ describe('Transpose', () => {
 
   test('first line longer than second line', () => {
     const input = ['The fourth line.', 'The fifth line.'];
-    const expected = ['TT', 'hh', 'ee', '  ', 'ff', 'oi', 'uf', 'rt', 'th', 'h ', ' l', 'li', 'in', 'ne', 'e.', '.'];
+    const expected = ['TT', 'hh', 'ee', '  ', 'ff', 'oi', 'uf', 'rt', 'th', 'h ', ' l', 'li', 'in', 'ne', 'e.', '. '];
     expect(transpose(input)).toEqual(expected);
   });
 
@@ -41,25 +41,25 @@ describe('Transpose', () => {
     expect(transpose(input)).toEqual(expected);
   });
 
-  xtest('square', () => {
+  test('square', () => {
     const input = ['HEART', 'EMBER', 'ABUSE', 'RESIN', 'TREND'];
     const expected = ['HEART', 'EMBER', 'ABUSE', 'RESIN', 'TREND'];
     expect(transpose(input)).toEqual(expected);
   });
 
-  xtest('rectangle', () => {
+  test('rectangle', () => {
     const input = ['FRACTURE', 'OUTLINED', 'BLOOMING', 'SEPTETTE'];
     const expected = ['FOBS', 'RULE', 'ATOP', 'CLOT', 'TIME', 'UNIT', 'RENT', 'EDGE'];
     expect(transpose(input)).toEqual(expected);
   });
 
-  xtest('triangle', () => {
+  test('triangle', () => {
     const input = ['T', 'EE', 'AAA', 'SSSS', 'EEEEE', 'RRRRRR'];
     const expected = ['TEASER', ' EASER', '  ASER', '   SER', '    ER', '     R'];
     expect(transpose(input)).toEqual(expected);
   });
 
-  xtest('many lines', () => {
+  test('many lines', () => {
     const input = ['Chor. Two households, both alike in dignity,', 'In fair Verona, where we lay our scene,', 'From ancient grudge break to new mutiny,', 'Where civil blood makes civil hands unclean.', 'From forth the fatal loins of these two foes', 'A pair of star-cross\'d lovers take their life;', 'Whose misadventur\'d piteous overthrows', 'Doth with their death bury their parents\' strife.', 'The fearful passage of their death-mark\'d love,', 'And the continuance of their parents\' rage,', 'Which, but their children\'s end, naught could remove,', 'Is now the two hours\' traffic of our stage;', 'The which if you with patient ears attend,', 'What here shall miss, our toil shall strive to mend.'];
     const expected = [
       'CIFWFAWDTAWITW',
@@ -114,7 +114,7 @@ describe('Transpose', () => {
       '          o  n',
       '          v  d',
       '          e  .',
-      '          ,',
+      '          ,   ',
     ];
     expect(transpose(input)).toEqual(expected);
   });
