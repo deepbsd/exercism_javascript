@@ -1,6 +1,6 @@
-export const translate = (input='') => {
+export const translate = (codons='') => {
     let result = [];
-    if (!input.length) return [];
+    if (!codons.length) return [];
 
     let proteins = {
         "STOP" : ["UAA","UAG","UGA"],
@@ -15,12 +15,12 @@ export const translate = (input='') => {
 
     let allTags = Object.values(proteins).join(', ').replace(/ /g, '').split(",");
 
-    for(let strSlice=0; strSlice<input.length; strSlice+=3){
-        for (let entry of Object.entries(proteins)){
+    for(let strSlice=0; strSlice<codons.length; strSlice+=3){
+        for (let entry of Object.entries(proteins)){      // entry = [ "protein", ["codon", "codon1"] ]
             let start = strSlice; let end = strSlice + 3;
-            if (!allTags.includes(input.slice(start,end))) throw new Error("Invalid codon");
-            if (proteins["STOP"].includes(input.slice(start,end))) return result;
-            if (entry[1].includes(input.slice(start, end))){
+            if (!allTags.includes(codons.slice(start,end))) throw new Error("Invalid codon");
+            if (proteins["STOP"].includes(codons.slice(start,end))) return result;
+            if (entry[1].includes(codons.slice(start, end))){
                 result.push(entry[0]);
             }
         }
