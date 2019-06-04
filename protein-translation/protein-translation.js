@@ -13,7 +13,7 @@ export const translate = (input='') => {
         "Tryptophan" : ["UGG"]
     }
 
-    let allTags = Object.values(proteins).join(', ').replace(/ /g, '').split(",")
+    let allTags = Object.values(proteins).join(', ').replace(/ /g, '').split(",");
 
     for(let strSlice=0; strSlice<input.length; strSlice+=3){
         for (let entry of Object.entries(proteins)){
@@ -23,7 +23,7 @@ export const translate = (input='') => {
             if (entry[1].includes(input.slice(start, end))){
                 result.push(entry[0]);
             }
-        };
+        }
     }
     return result;
 }
