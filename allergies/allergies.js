@@ -1,19 +1,11 @@
 export class Allergies {
   constructor(score) {
-    this.score = score;
-    this.allergies = ['eggs','peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'];
+    this.allergens = ['eggs','peanuts', 'shellfish', 'strawberries', 'tomatoes', 'chocolate', 'pollen', 'cats'];
+    this.allergies = this.allergens.filter((allergen,index) => score & (1 << index));
   }
 
-  list() {
-    let list = [];
-    for (let i=0; i<this.allergies.length; i++){
-        if (0 < (this.score & 1 << i)) list.push(this.allergies[i]);
-    }
-    return list;
-  }
+  list() { return this.allergies; }
 
-  allergicTo(allergen) {
-    return this.list().includes(allergen);
-  }
+  allergicTo(allergen) { return this.allergies.includes(allergen); }
 }
 
