@@ -9,6 +9,10 @@ describe('meetupDay()', () => {
     expect(meetupDay(2013, 1, 'Saturday', 'teenth')).toEqual(new Date(2013, 1, 16));
   });
 
+  test('test saturteenth of april 2013', () => {
+    expect(meetupDay(2013, 3, 'Saturday', 'teenth')).toEqual(new Date(2013, 3, 13));
+  });
+
   test('test first tuesday of may 2013', () => {
     expect(meetupDay(2013, 4, 'Tuesday', '1st')).toEqual(new Date(2013, 4, 7));
   });
@@ -29,7 +33,7 @@ describe('meetupDay()', () => {
     expect(meetupDay(2013, 9, 'Thursday', 'last')).toEqual(new Date(2013, 9, 31));
   });
 
-  xtest('test last wednesday of february 2012', () => {
+  test('test last wednesday of february 2012', () => {
     expect(meetupDay(2012, 1, 'Wednesday', 'last')).toEqual(new Date(2012, 1, 29));
   });
 
