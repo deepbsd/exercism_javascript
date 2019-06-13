@@ -8,31 +8,31 @@ export const meetupDay = (year, month, weekday, which) => {
                     "4th": [22,23,24,25,26,27,28,29,30], "5th": [25,26,27,28,29,30,31], "last": [25,26,27,28,29,30,31] };
     
     let today = new Date("2019-05-13T04:00:00Z");
-    //let [hours, minutes, seconds, ms] = [4, 0, 0, 0];
     let targetDate;
 
     today.setUTCFullYear(year); 
     today.setUTCMonth(month);
-    //today.setUTCHours(hours, seconds, minutes, ms);
 
     ranges[which].forEach(function(date){
         today.setUTCDate(date);
         
-        if (today.getDay() === days[weekday] ) {
+        if ((today.getDay() === days[weekday]) && (today.getUTCMonth() === month) && (today.getUTCDate() === date) ) {
             let testDay = new Date(today.toString());
             
             console.log("today:    ",today, "\nnew test: ", testDay, " equal? ",today.toString() == testDay.toString());
-            //if (new Date(today.toString()).toString() === today.toString()) {
-            if (testDay.toString() === today.toString()) {
-                console.log("Is Valid! ","today: ", today, " month: ", month,"date: ",date, " dayOfWeek: ",days[weekday]);
+            
+            //if (testDay.toString() === today.toString() && (today.getUTCMonth() === month)) {
+            if (! today.toString().includes('Invalid')) {
+                //console.log("Is Valid! ","today: ", today, " month: ", month,"date: ",date, " dayOfWeek: ",days[weekday]);
                 targetDate = date;    
             }
         }
     })
 
     today.setUTCDate(targetDate);
+    console.log("Final Date: ", today.toString())
 
-    if ( (today.getUTCFullYear() != year) || (today.getUTCMonth() != month) || today.getUTCDate() != targetDate ) throw "Invalid Date." ;
+    if ( (today.getUTCFullYear() != year) || (today.getUTCMonth() != month) || today.getUTCDate() != targetDate ) throw "Invalid Date.";
     
 
     return today;
