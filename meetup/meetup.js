@@ -2,6 +2,8 @@
 export const meetupDay = (year, month, weekday, which) => {
 //const meetupDay = (year, month, weekday, which) => {
 
+    let moment = require('moment');
+
     const months = {"Jan":0, "Feb":1, "Mar":2, "Apr":3, "May":4, "Jun":5, "Jul":6, "Aug":7, "Sep":8, "Oct":9, "Nov":10, "Dec":11};
     const days = {"Monday":1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday":6, "Sunday":0};
     const ranges = {"1st": [1,2,3,4,5,6,7], "teenth": [13,14,15,16,17,18,19], "2nd": [8,9,10,11,12,13,14], "3rd": [15,16,17,18,19,20,21],
@@ -16,10 +18,12 @@ export const meetupDay = (year, month, weekday, which) => {
 
     ranges[which].forEach(function(date){
         today.setUTCDate(date) ;
-        console.log("date: ", date, "weekday: ",days[weekday])
-        if (today.getDay() === days[weekday]) {
-            if (! new Date(`${+year}-${date}-${month}`) !== 'Invalid Date') {
-                console.log("today: ", today, " month: ", month,"date: ",date, " dayOfWeek: ",days[weekday]);
+        
+        //console.log("date: ", date, "weekday: ",days[weekday])
+        if (today.getDay() === days[weekday] ) {
+            let dayWrapper = moment(today);
+            if ( dayWrapper.isValid()) {
+                console.log("Valid? ", dayWrapper.isValid(), "today: ", today, " month: ", month,"date: ",date, " dayOfWeek: ",days[weekday]);
                 targetDate = date;    
             }
         }
@@ -27,17 +31,15 @@ export const meetupDay = (year, month, weekday, which) => {
 
     let date = targetDate;
 
-    if (new Date(year,month,date) === 'Invalid Date') throw("Invalid Date.");
 
-    today.setUTCDate(date);
+    today.setUTCDate(date-1);
     today.setUTCHours(hours, seconds, minutes, ms);
+    let checkDay = moment(today)
 
+    //if ( (today.getUTCFullYear() != year) || (today.getUTCMonth() != month) || today.getUTCDate() != date ) throw "Invalid Date." ;
     
-    //console.log(today);
 
     return today;
-
-
 }
 
 
