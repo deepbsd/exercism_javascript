@@ -5,7 +5,7 @@ describe('meetupDay()', () => {
     expect(meetupDay(2013, 4, 'Monday', 'teenth')).toEqual(new Date(2013, 4, 13));
   });
 
-  xtest('test saturteenth of february 2013', () => {
+  test('test saturteenth of february 2013', () => {
     expect(meetupDay(2013, 1, 'Saturday', 'teenth')).toEqual(new Date(2013, 1, 16));
   });
 
@@ -37,15 +37,15 @@ describe('meetupDay()', () => {
     expect(meetupDay(2012, 1, 'Wednesday', 'last')).toEqual(new Date(2012, 1, 29));
   });
 
-  xtest('test last wednesday of december 2014', () => {
+  test('test last wednesday of december 2014', () => {
     expect(meetupDay(2014, 11, 'Wednesday', 'last')).toEqual(new Date(2014, 11, 31));
   });
 
-  xtest('test last sunday of only four week february 2015', () => {
+  test('test last sunday of only four week february 2015', () => {
     expect(meetupDay(2015, 1, 'Sunday', 'last')).toEqual(new Date(2015, 1, 22));
   });
 
-  xtest('test first friday of december 2012', () => {
+  test('test first friday of december 2012', () => {
     expect(meetupDay(2012, 11, 'Friday', '1st')).toEqual(new Date(2012, 11, 7));
   });
 
