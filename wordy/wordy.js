@@ -25,7 +25,7 @@ export function WordProblem(question) {
         // All operators and arguments were put into arrays; if they're empty
         // return the calculated values, if not empty, keep shifting until they are.
         let func = operatorArray.shift();
-        let useArgs = [ args.shift(), args.shift() ]
+        let useArgs = [ args.shift(), args.shift() ];
         if (args.length === 0) return func(...useArgs); 
         else {
             let firstValue = func(...useArgs); 
