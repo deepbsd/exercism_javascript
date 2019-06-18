@@ -21,6 +21,10 @@ class List {
         return node;
     }
 
+    add(value){
+        return this.unshift(value);
+    }
+
     push(value) {
         const newNode = {
             value
@@ -28,16 +32,18 @@ class List {
 
         // if we're pushing onto an empty list
         if (this.length === 0){
-            this.head = newNode;
+            this.head = newNode.value;
             this.head.next = null;
             this.length++;
         }else{
             // Find the node which we want to insert after
-            const node = this._find(this.length);
+            const node = this._find(this.length-1);
             node.next = newNode;
             newNode.next = node;
             this.length++;
+            console.log("this: ",this)
         }
+        
     }
 
     reverse(){
@@ -47,7 +53,7 @@ class List {
     shift(){
         // removing value from front of list
         let node = this.head;
-        let this.head = node.next;
+        this.head = node.next;
         return node;
     }
 
@@ -62,8 +68,9 @@ class List {
         };
 
         let node = this.head;
-        this.head = newNode;
+        this.head = newNode.value;
         this.head.next = node;
+        this.length++;
     }
 
 
@@ -74,8 +81,10 @@ List.fromArray = function(arr){
 }
 
 class Element {
-
-
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
 }
 
 
