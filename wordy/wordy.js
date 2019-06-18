@@ -5,16 +5,13 @@ export function WordProblem(question) {
     this.question = question.replace(/ by/g,'').replace(/ is/g,'').replace(/What /g,'');
     this.ArgumentError = function(){ throw "Error!"; }
     this.answer = () => {
-        let operator;
-        let func;
+        if (question.indexOf('What') < 0) this.ArgumentError();
         let instructions = this.question.split(" ");
-        console.log("instructions: ",instructions);
-        let args = [];
-        let tempOperators = [];
+
+        let operator, func, useFunc;
+        let args = []; let useArgs = []; let tempOperators = [];
 
         instructions.map( elem => {
-            //if (elem.toLowerCase() === 'what' || elem.toLowerCase() === 'is' || elem.toLowerCase() === 'by') instructions.splice(instructions.indexOf(elem), 1);
-            console.log("instructions2: ",instructions)
             if (typeof +elem === 'number') {
                 args.push(parseInt(elem,10));
             } 
@@ -26,62 +23,26 @@ export function WordProblem(question) {
                 if (operator === this.operators[3]) func = this.divide;
                 tempOperators.push(func);
             }
-            console.log("element: ",elem);
-            console.log("operator: ",operator, " func: ",func, " tempOperators: ",tempOperators)
-        })
-        console.log("operator: ",operator, " args: ", args );
+        });
         args = args.filter( elem => ! isNaN(elem));
-        console.log("arguments: ",args);
-        return func(...args)
+        useFunc = tempOperators.shift();
+        useArgs = [ args.shift(), args.shift() ]
+        if (args.length === 0) return useFunc(...useArgs); 
+        else {
+            let value = useFunc(...useArgs); 
+            let nextFunc = tempOperators.shift();
+            let nextArgs = args;
+            let nextValue = nextFunc(value, ...nextArgs);
+            return nextValue;
+        }
     } 
 }
 
-WordProblem.prototype.divide = function(first,second){
-    return first/second;
-}
+WordProblem.prototype.divide = function(first,second){ return first/second; }
 
-WordProblem.prototype.multiply = function(first,second){
-    return first * second;
-}
+WordProblem.prototype.multiply = function(first,second){ return first * second; }
 
-WordProblem.prototype.minus = function(first,second){
-    return first - second;
-}
+WordProblem.prototype.minus = function(first,second){ return first - second; }
 
-WordProblem.prototype.add = function(first,second){
-    return first + second;
-}
-
-        //instructions.forEach( elem => {
-        //    if (elem.toLowerCase() === 'what' || elem.toLowerCase() === 'is') instructions.splice(instructions.indexOf(elem), 1);
-        //    if (typeof +elem === 'number') {
-        //        args.push(parseInt(elem, 10));
-        //        console.log("arguments: ",args)
-        //    }
-        //    if (this.arguments.includes(elem)){
-        //        
-        //        operation = elem;
-        //        console.log("operation: ",operation, " arguments: ", this.arguments[0], " equal? ",operation === this.arguments[0])
-        //        if (operation === this.arguments[0]) {
-        //            console.log("call self.add()");
-        //            console.log("what is self? ", this)
-        //            let self = this.super();
-        //            return self.add(1,1);
-        //        }
-        //        else {
-        //            console.log("default")
-        //        }
-        //            //case (operation === this.arguments[0]):
-        //            //    console.log("call self.add()")
-        //            //    //return self.add(1,1);
-        //            //default:
-        //            //    console.log("default")
-        //            //    //return self.add(1,1);
-        //    }
-        //    throw "Bad input."
-        //})
-
-
-
-        //return this.add(1,1);
+WordProblem.prototype.add = function(first,second){ return first + second; }
 
