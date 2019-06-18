@@ -1,34 +1,38 @@
 
 
 export function WordProblem(question) {
-    this.arguments = ["plus", "minus", "multiplied by", "divided by"];
-    this.question = question;
+    this.operators = ["plus", "minus", "multiplied", "divided"];
+    this.question = question.replace(/ by/g,'').replace(/ is/g,'').replace(/What /g,'');
     this.ArgumentError = function(){ throw "Error!"; }
     this.answer = () => {
-        let operation;
+        let operator;
+        let func;
         let instructions = this.question.split(" ");
+        console.log("instructions: ",instructions);
         let args = [];
+        let tempOperators = [];
 
         instructions.map( elem => {
-            if (elem.toLowerCase() === 'what' || elem.toLowerCase() === 'is') instructions.splice(instructions.indexOf(elem), 1);
+            //if (elem.toLowerCase() === 'what' || elem.toLowerCase() === 'is' || elem.toLowerCase() === 'by') instructions.splice(instructions.indexOf(elem), 1);
+            console.log("instructions2: ",instructions)
             if (typeof +elem === 'number') {
-                args.push(+elem);
-                console.log("arguments: ",args)
+                args.push(parseInt(elem,10));
             } 
-            if (this.arguments.includes(elem)){
-                operation = elem;
-                console.log("operation: ",operation, " args: ", args," arguments: ", this.arguments[0], " equal? ",operation === this.arguments[0])
-                if (operation === this.arguments[0]) {
-                    console.log("call this.add()");
-                    console.log("what is this? ", this)
-                    //return this.add(1,1);
-                }
-                else {
-                    console.log("default")
-                }
+            if (this.operators.includes(elem)){
+                operator = elem;
+                if (operator === this.operators[0]) func = this.add; 
+                if (operator === this.operators[1]) func = this.minus;
+                if (operator === this.operators[2]) func = this.multiply;
+                if (operator === this.operators[3]) func = this.divide;
+                tempOperators.push(func);
             }
+            console.log("element: ",elem);
+            console.log("operator: ",operator, " func: ",func, " tempOperators: ",tempOperators)
         })
-        return this.add(1,1)
+        console.log("operator: ",operator, " args: ", args );
+        args = args.filter( elem => ! isNaN(elem));
+        console.log("arguments: ",args);
+        return func(...args)
     } 
 }
 
