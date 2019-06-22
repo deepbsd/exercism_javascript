@@ -1,8 +1,10 @@
 // Implement a Singly Linked List
 class List {
-    constructor() {
-        this.length = 0;
+    constructor(arr) {
+        this.arr = [];
+        this.length = this.arr.length || 0;
         this.head = null;
+        if (this.arr.length) this.arr.forEach( value => this.add(value) );
     }
     
     _find(index) {
@@ -67,10 +69,12 @@ class List {
             value
         };
 
+        // dropping a value here...
         let node = this.head;
         this.head = newNode.value;
         this.head.next = node;
         this.length++;
+        console.log("this: ",this)
     }
 
 

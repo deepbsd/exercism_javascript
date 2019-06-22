@@ -71,7 +71,7 @@ describe('List class', () => {
     list.add(element2);
     expect(list.head.next.value).toEqual(1);
   });
-  xtest('can be initialized with an array', () => {
+  test('can be initialized with an array', () => {
     const list = new List([1, 2, 3]);
     expect(list.length).toEqual(3);
     expect(list.head.value).toEqual(3);
