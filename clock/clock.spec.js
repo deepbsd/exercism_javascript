@@ -26,7 +26,7 @@ describe('Clock', () => {
       expect(at(1, 60).toString()).toEqual('02:00');
     });
 
-    xtest('minutes roll over', () => {
+    test('minutes roll over', () => {
       expect(at(0, 160).toString()).toEqual('02:40');
     });
 
