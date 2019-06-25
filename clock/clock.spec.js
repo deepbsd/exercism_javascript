@@ -30,11 +30,11 @@ describe('Clock', () => {
       expect(at(0, 160).toString()).toEqual('02:40');
     });
 
-    xtest('minutes roll over continuously', () => {
+    test('minutes roll over continuously', () => {
       expect(at(0, 1723).toString()).toEqual('04:43');
     });
 
-    xtest('hour and minutes roll over', () => {
+    test('hour and minutes roll over', () => {
       expect(at(25, 160).toString()).toEqual('03:40');
     });
 
