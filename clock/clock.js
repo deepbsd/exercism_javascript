@@ -1,29 +1,30 @@
-//
-// This is only a SKELETON file for the 'Clock' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
 
-export class at {
-  constructor(hrs,mins) {
-    this.mins = mins || 0;
-    this.hrs = hrs || 0;
-  }
+export const at = function(hrs=0,mins=0) {
 
-  toString() {
-    let clock = new at(this.hrs,this.mins);
-    console.log("clock: ",this.hrs," : ",this.mins);
-    return `${clock.hours}:{clock.minutes}`;
-  }
+    if (+mins >= 60) {
+        hrs = `${(+hrs + Math.floor(+mins/60))}`;
+        mins = 60 - +mins;
+    }
+    let hours = (+hrs < 10) ? "0" + hrs : (+hrs >= 48) ? "0" + Math.round(+hrs/24) : (+hrs >= 24) ? "0" + (+hrs - 24)  : hrs;
+    let minutes = (+mins < 10) ? "0" + mins : mins;
 
-  plus() {
-    throw new Error("Remove this statement and implement this function");
-  }
-
-  minus() {
-    throw new Error("Remove this statement and implement this function");
-  }
-
-  equals() {
-    throw new Error("Remove this statement and implement this function");
-  }
+    return `${hours}:${minutes}`;
 }
+
+//  toString() {
+//    let clock = new at(this.hrs,this.mins);
+//    console.log("clock: ",this.hrs," : ",this.mins);
+//    return `${clock.hours}:{clock.minutes}`;
+//  }
+//
+//  plus() {
+//    throw new Error("Remove this statement and implement this function");
+//  }
+//
+//  minus() {
+//    throw new Error("Remove this statement and implement this function");
+//  }
+//
+//  equals() {
+//    throw new Error("Remove this statement and implement this function");
+//  }
