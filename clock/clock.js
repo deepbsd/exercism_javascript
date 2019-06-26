@@ -20,12 +20,13 @@ class Clock {
         let [hours, mins] = [(Math.floor(this.minutes / 60)) % 24, this.minutes % 60];
         if (hours < 0) hours = negativeHrs(hours);
         if (mins < 0) mins = negativeMins(mins);
-        console.log("Hours: ",hours," Minutes: ",mins)
         return `${doFormat(hours)}:${doFormat(mins)}`;
     }
 
     equals (otherClock) {
-        return this.minutes === otherClock.minutes;
+        console.log("thisClock: ",this.minutes, " otherClock: ",otherClock.minutes % minsInDay )
+        if (otherClock.minutes < 0) otherClock.minutes = negativeMins(otherClock.minutes) ;
+        return this.minutes === otherClock.minutes % minsInDay;
     }
 }
 

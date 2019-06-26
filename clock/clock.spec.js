@@ -157,15 +157,15 @@ describe('Clock', () => {
         expect(at(14, 37).equals(at(15, 37))).toBeFalsy();
       });
 
-      xtest('clocks with hour overflow', () => {
+      test('clocks with hour overflow', () => {
         expect(at(10, 37).equals(at(34, 37))).toBeTruthy();
       });
 
-      xtest('clocks with hour overflow by several days', () => {
+      test('clocks with hour overflow by several days', () => {
         expect(at(3, 11).equals(at(99, 11))).toBeTruthy();
       });
 
-      xtest('clocks with negative hour', () => {
+      test('clocks with negative hour', () => {
         expect(at(22, 40).equals(at(-2, 40))).toBeTruthy();
       });
 
@@ -177,11 +177,11 @@ describe('Clock', () => {
         expect(at(13, 49).equals(at(-83, 49))).toBeTruthy();
       });
 
-      xtest('clocks with minute overflow', () => {
+      test('clocks with minute overflow', () => {
         expect(at(0, 1).equals(at(0, 1441))).toBeTruthy();
       });
 
-      xtest('clocks with minute overflow by several days', () => {
+      test('clocks with minute overflow by several days', () => {
         expect(at(2, 2).equals(at(2, 4322))).toBeTruthy();
       });
 
