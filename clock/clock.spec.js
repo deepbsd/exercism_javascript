@@ -38,15 +38,15 @@ describe('Clock', () => {
       expect(at(25, 160).toString()).toEqual('03:40');
     });
 
-    xtest('hour and minutes roll over continuously', () => {
+    test('hour and minutes roll over continuously', () => {
       expect(at(201, 3001).toString()).toEqual('11:01');
     });
 
-    xtest('hour and minutes roll over to exactly midnight', () => {
+    test('hour and minutes roll over to exactly midnight', () => {
       expect(at(72, 8640).toString()).toEqual('00:00');
     });
 
-    xtest('negative hour', () => {
+    test('negative hour', () => {
       expect(at(-1, 15).toString()).toEqual('23:15');
     });
 

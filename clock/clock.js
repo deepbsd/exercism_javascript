@@ -1,30 +1,30 @@
 
-export const at = function(hrs=0,mins=0) {
+const minsInDay = 60 * 24;
+const twoPlaces = (number) => number<10 ? `0${number}` : `${number}`;
 
-    if (+mins >= 60) {
-        hrs = `${(+hrs + Math.floor(+mins/60))}`;
+class Clock {
+    constructor (minutes) {
+        this.minutes = minutes;
     }
-    let hours = (+hrs < 10) ? "0" + hrs : (+hrs >= 48) ? "0" + Math.round(+hrs/24) : (+hrs >= 24) ? "0" + (+hrs - 24)  : hrs;
-    let minutes = (+mins < 10) ? "0" + mins : (+mins >= 60) ? `${(+mins - Math.floor(+mins/60) * 60)}` : mins;
-    if (minutes.length<2) minutes = "0"+minutes;
 
-    return `${hours}:${minutes}`;
+    plus (mins) {
+        return new Clock((minsInDay + this.minutes + mins) % minsInDay);
+    }
+
+    minus (mins) {
+        return this.plus(-mins);
+    }
+
+    toString() {
+        const [hours, mins] = [(Math.floor(this.minutes / 60)) % 24, this.minutes % 60];
+        return `${twoPlaces(hours)}:${twoPlaces(mins)}`;
+    }
+
+    equals (otherClock) {
+        return this.minutes === otherClock.minutes;
+    }
 }
 
-//  toString() {
-//    let clock = new at(this.hrs,this.mins);
-//    console.log("clock: ",this.hrs," : ",this.mins);
-//    return `${clock.hours}:{clock.minutes}`;
-//  }
-//
-//  plus() {
-//    throw new Error("Remove this statement and implement this function");
-//  }
-//
-//  minus() {
-//    throw new Error("Remove this statement and implement this function");
-//  }
-//
-//  equals() {
-//    throw new Error("Remove this statement and implement this function");
-//  }
+export const at = (hrs,mins=0) => new Clock(hrs * 60 + mins);
+
+
