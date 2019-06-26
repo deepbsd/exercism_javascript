@@ -1,6 +1,7 @@
-
 const minsInDay = 60 * 24;
-const twoPlaces = (number) => number<10 ? `0${number}` : `${number}`;
+const doFormat = (number) => number<10 ? `0${number}` : `${number}`;
+const negativeMins = (mins) =>  60 + mins;
+const negativeHrs = (hrs) => 24 + hrs;
 
 class Clock {
     constructor (minutes) {
@@ -16,8 +17,11 @@ class Clock {
     }
 
     toString() {
-        const [hours, mins] = [(Math.floor(this.minutes / 60)) % 24, this.minutes % 60];
-        return `${twoPlaces(hours)}:${twoPlaces(mins)}`;
+        let [hours, mins] = [(Math.floor(this.minutes / 60)) % 24, this.minutes % 60];
+        if (hours < 0) hours = negativeHrs(hours);
+        if (mins < 0) mins = negativeMins(mins);
+        console.log("Hours: ",hours," Minutes: ",mins)
+        return `${doFormat(hours)}:${doFormat(mins)}`;
     }
 
     equals (otherClock) {

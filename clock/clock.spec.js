@@ -54,27 +54,27 @@ describe('Clock', () => {
       expect(at(-25, 0).toString()).toEqual('23:00');
     });
 
-    xtest('negative hour rolls over continuously', () => {
+    test('negative hour rolls over continuously', () => {
       expect(at(-91, 0).toString()).toEqual('05:00');
     });
 
-    xtest('negative minutes', () => {
+    test('negative minutes', () => {
       expect(at(1, -40).toString()).toEqual('00:20');
     });
 
-    xtest('negative minutes rolls over', () => {
+    test('negative minutes rolls over', () => {
       expect(at(1, -160).toString()).toEqual('22:20');
     });
 
-    xtest('negative minutes rolls over continuously', () => {
+    test('negative minutes rolls over continuously', () => {
       expect(at(1, -4820).toString()).toEqual('16:40');
     });
 
-    xtest('negative hour and minutes both roll over', () => {
+    test('negative hour and minutes both roll over', () => {
       expect(at(-25, -160).toString()).toEqual('20:20');
     });
 
-    xtest('negative hour and minutes both roll over continuously', () => {
+    test('negative hour and minutes both roll over continuously', () => {
       expect(at(-121, -5810).toString()).toEqual('22:10');
     });
 
@@ -83,77 +83,77 @@ describe('Clock', () => {
         expect(at(10, 0).plus(3).toString()).toEqual('10:03');
       });
 
-      xtest('add no minutes', () => {
+      test('add no minutes', () => {
         expect(at(6, 41).plus(0).toString()).toEqual('06:41');
       });
 
-      xtest('add to next hour', () => {
+      test('add to next hour', () => {
         expect(at(0, 45).plus(40).toString()).toEqual('01:25');
       });
 
-      xtest('add more than one hour', () => {
+      test('add more than one hour', () => {
         expect(at(10, 0).plus(61).toString()).toEqual('11:01');
       });
 
-      xtest('add more than two hours with carry', () => {
+      test('add more than two hours with carry', () => {
         expect(at(0, 45).plus(160).toString()).toEqual('03:25');
       });
 
-      xtest('add across midnight', () => {
+      test('add across midnight', () => {
         expect(at(23, 59).plus(2).toString()).toEqual('00:01');
       });
 
-      xtest('add more than one day (1500 min = 25 hrs)', () => {
+      test('add more than one day (1500 min = 25 hrs)', () => {
         expect(at(5, 32).plus(1500).toString()).toEqual('06:32');
       });
 
-      xtest('add more than two days', () => {
+      test('add more than two days', () => {
         expect(at(1, 1).plus(3500).toString()).toEqual('11:21');
       });
 
-      xtest('subtract minutes', () => {
+      test('subtract minutes', () => {
         expect(at(10, 3).minus(3).toString()).toEqual('10:00');
       });
 
-      xtest('subtract to previous hour', () => {
+      test('subtract to previous hour', () => {
         expect(at(10, 3).minus(30).toString()).toEqual('09:33');
       });
 
-      xtest('subtract more than an hour', () => {
+      test('subtract more than an hour', () => {
         expect(at(10, 3).minus(70).toString()).toEqual('08:53');
       });
 
-      xtest('subtract across midnight', () => {
+      test('subtract across midnight', () => {
         expect(at(0, 3).minus(4).toString()).toEqual('23:59');
       });
 
-      xtest('subtract more than two hours', () => {
+      test('subtract more than two hours', () => {
         expect(at(0, 0).minus(160).toString()).toEqual('21:20');
       });
 
-      xtest('subtract more than two hours with borrow', () => {
+      test('subtract more than two hours with borrow', () => {
         expect(at(6, 15).minus(160).toString()).toEqual('03:35');
       });
 
-      xtest('subtract more than one day (1500 min = 25 hrs)', () => {
+      test('subtract more than one day (1500 min = 25 hrs)', () => {
         expect(at(5, 32).minus(1500).toString()).toEqual('04:32');
       });
 
-      xtest('subtract more than two days', () => {
+      test('subtract more than two days', () => {
         expect(at(2, 20).minus(3000).toString()).toEqual('00:20');
       });
     });
 
     describe('Construct two separate clocks, set times, test if they are equal', () => {
-      xtest('clocks with same time', () => {
+      test('clocks with same time', () => {
         expect(at(15, 37).equals(at(15, 37))).toBeTruthy();
       });
 
-      xtest('clocks a minute apart', () => {
+      test('clocks a minute apart', () => {
         expect(at(15, 36).equals(at(15, 37))).toBeFalsy();
       });
 
-      xtest('clocks an hour apart', () => {
+      test('clocks an hour apart', () => {
         expect(at(14, 37).equals(at(15, 37))).toBeFalsy();
       });
 
