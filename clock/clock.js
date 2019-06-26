@@ -1,7 +1,7 @@
 const minsInDay = 60 * 24;
 const doFormat = (number) => number<10 ? `0${number}` : `${number}`;
 const negativeMins = (mins) =>  60 + mins;
-const negativeHrs = (hrs) => 24 + hrs;
+const negativeHrs = hrs => Math.abs(hrs)>24 ? 24 + hrs%24 : 24 + hrs;
 
 class Clock {
     constructor (minutes) {
@@ -30,6 +30,6 @@ class Clock {
     }
 }
 
-export const at = (hrs,mins=0) => new Clock(hrs * 60 + mins);
+export const at = (hrs,mins=0) => new Clock(( (hrs<0) ? negativeHrs(hrs) : hrs) * 60 + mins);
 
 

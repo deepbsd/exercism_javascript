@@ -50,7 +50,7 @@ describe('Clock', () => {
       expect(at(-1, 15).toString()).toEqual('23:15');
     });
 
-    xtest('negative hour rolls over', () => {
+    test('negative hour rolls over', () => {
       expect(at(-25, 0).toString()).toEqual('23:00');
     });
 
@@ -79,7 +79,7 @@ describe('Clock', () => {
     });
 
     describe('Adding and subtracting minutes', () => {
-      xtest('add minutes', () => {
+      test('add minutes', () => {
         expect(at(10, 0).plus(3).toString()).toEqual('10:03');
       });
 
@@ -165,15 +165,15 @@ describe('Clock', () => {
         expect(at(3, 11).equals(at(99, 11))).toBeTruthy();
       });
 
-      xtest('clocks with negative hour', () => {
+      test('clocks with negative hour', () => {
         expect(at(22, 40).equals(at(-2, 40))).toBeTruthy();
       });
 
-      xtest('clocks with negative hour that wraps', () => {
+      test('clocks with negative hour that wraps', () => {
         expect(at(17, 3).equals(at(-31, 3))).toBeTruthy();
       });
 
-      xtest('clocks with negative hour that wraps multiple times', () => {
+      test('clocks with negative hour that wraps multiple times', () => {
         expect(at(13, 49).equals(at(-83, 49))).toBeTruthy();
       });
 
