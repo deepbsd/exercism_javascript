@@ -165,7 +165,7 @@ describe('Clock', () => {
         expect(at(3, 11).equals(at(99, 11))).toBeTruthy();
       });
 
-      test('clocks with negative hour', () => {
+      xtest('clocks with negative hour', () => {
         expect(at(22, 40).equals(at(-2, 40))).toBeTruthy();
       });
 
@@ -185,7 +185,7 @@ describe('Clock', () => {
         expect(at(2, 2).equals(at(2, 4322))).toBeTruthy();
       });
 
-      xtest('clocks with negative minute', () => {
+      test('clocks with negative minute', () => {
         expect(at(2, 40).equals(at(3, -20))).toBeTruthy();
       });
 
