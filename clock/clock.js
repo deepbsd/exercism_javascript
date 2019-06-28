@@ -25,7 +25,7 @@ class Clock {
 
     equals (otherClock) {
         if (otherClock.minutes < 0) otherClock.minutes = negativeMins(otherClock.minutes) ;
-        console.log("2nd thisClock: ",this.minutes, " otherClock: ",otherClock.minutes  )
+        //console.log("2nd thisClock: ",this.minutes, " otherClock: ",otherClock.minutes  )
         return this.minutes === otherClock.minutes % minsInDay;
     }
 }
