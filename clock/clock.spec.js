@@ -189,7 +189,7 @@ describe('Clock', () => {
         expect(at(2, 40).equals(at(3, -20))).toBeTruthy();
       });
 
-      xtest('clocks with negative minute that wraps', () => {
+      test('clocks with negative minute that wraps', () => {
         expect(at(4, 10).equals(at(5, -1490))).toBeTruthy();
       });
 
