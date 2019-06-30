@@ -1,6 +1,6 @@
 const minsInDay = 60 * 24;
 const doFormat = (number) => number<10 ? `0${number}` : `${number}`;
-const negativeMins = mins => Math.abs(mins)>minsInDay ?  mins%minsInDay + minsInDay : 60 + mins;
+const negativeMins = mins => Math.abs(mins)>60 ?  mins%minsInDay + minsInDay : 60 + mins;
 const negativeHrs = hrs => Math.abs(hrs)>24 ? 24 + hrs%24 : 24 + hrs;
 
 class Clock {
