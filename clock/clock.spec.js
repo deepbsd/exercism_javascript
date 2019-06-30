@@ -193,15 +193,15 @@ describe('Clock', () => {
         expect(at(4, 10).equals(at(5, -1490))).toBeTruthy();
       });
 
-      xtest('clocks with negative minute that wraps multiple times', () => {
+      test('clocks with negative minute that wraps multiple times', () => {
         expect(at(6, 15).equals(at(6, -4305))).toBeTruthy();
       });
 
-      xtest('clocks with negative hours and minutes', () => {
+      test('clocks with negative hours and minutes', () => {
         expect(at(7, 32).equals(at(-12, -268))).toBeTruthy();
       });
 
-      xtest('clocks with negative hours and minutes that wrap', () => {
+      test('clocks with negative hours and minutes that wrap', () => {
         expect(at(18, 7).equals(at(-54, -11513))).toBeTruthy();
       });
     });
