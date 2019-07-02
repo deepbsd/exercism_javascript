@@ -1,8 +1,6 @@
-import _ from 'lodash';
 export class Triplet {
   constructor(a,b,c) {
     this.numbers = [a,b,c].sort( (a,b) => a - b );
-    //this.isPythagorean = arr => arr[0]**2 + arr[1]**2 === arr[2]**2;
   }
 
   sum() {
@@ -35,7 +33,6 @@ export class Triplet {
       let set = new Set(finalTriplets.map(JSON.stringify));
       finalTriplets = Array.from(set).map(JSON.parse).map(obj => new Triplet(...obj.numbers))
     }
-    console.log("Triplets: ", finalTriplets)
 
     return finalTriplets;
   }
