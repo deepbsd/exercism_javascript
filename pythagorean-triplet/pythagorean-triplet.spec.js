@@ -5,19 +5,23 @@ describe('Triplet', () => {
     expect(new Triplet(3, 4, 5).sum()).toBe(12);
   });
 
-  xtest('calculates the product', () => {
+  test('calculates the product', () => {
     expect(new Triplet(3, 4, 5).product()).toBe(60);
   });
 
-  xtest('can recognize a pythagorean triplet', () => {
+  test('can recognize a pythagorean triplet', () => {
     expect(new Triplet(3, 4, 5).isPythagorean()).toBe(true);
   });
 
-  xtest('can recognize a non pythagorean triplet', () => {
+  test('recognizes 6,8,10 to be triplet', () => {
+    expect(new Triplet(6, 8, 10).isPythagorean()).toBe(true);
+  });
+
+  test('can recognize a non pythagorean triplet', () => {
     expect(new Triplet(5, 6, 7).isPythagorean()).toBe(false);
   });
 
-  xtest('can make triplets up to 10', () => {
+  test('can make triplets up to 10', () => {
     const triplets = Triplet.where({ maxFactor: 10 });
     const products = triplets.sort().map(triplet => triplet.product());
     expect(products).toEqual([60, 480]);
