@@ -24,12 +24,13 @@ export class Triplet {
         for (let y=min; y<=max; y++){
             for (let z=min; z<=max; z++){
                 let trip = new Triplet(x,y,z);
-                if (trip.isPythagorean()) triplets.push(trip.numbers)
+                if (trip.isPythagorean()) triplets.push(trip)
             }
         }
     }
-    let finalTriplets = new Set(triplets);
-    console.log("Triplets: ",finalTriplets)
+    let finalTriplets = triplets.filter( (curVal, index, arr) => JSON.stringify(curVal) !== JSON.stringify(arr[index+1]) )
+    if (obj.sum) finalTriplets = finalTriplets.filter( (curVal, index, arr) => curVal.sum() === obj.sum && JSON.stringify(curVal) !== JSON.stringify(arr[index-1]));
+    console.log("Triplets: ", finalTriplets)
     return finalTriplets;
   }
 }
