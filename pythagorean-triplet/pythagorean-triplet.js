@@ -29,7 +29,7 @@ export class Triplet {
         }
     }
     let finalTriplets = triplets.filter( (curVal, index, arr) => JSON.stringify(curVal) !== JSON.stringify(arr[index+1]) )
-    if (obj.sum) finalTriplets = finalTriplets.filter( (curVal, index, arr) => curVal.sum() === obj.sum && JSON.stringify(curVal) !== JSON.stringify(arr[index-1]));
+    if (obj.sum) finalTriplets = finalTriplets.filter( (curVal, index, arr) => curVal.sum() === obj.sum );
     console.log("Triplets: ", finalTriplets)
     return finalTriplets;
   }
