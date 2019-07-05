@@ -12,12 +12,18 @@ export const matchingBrackets = (string) => {
   let opened = ['{','[','('] ;
   let closed = ['}',']',')'] ;
   let toMatch = [];
+  let inputArr = string.split("");
 
   // Last in must be first matched to be true, otherwise return false
-  string.forEach( character => if opened.includes(character) toMatch.push(character) );
+  inputArr.forEach( character => {  if (opened.includes(character)) toMatch.push(character) });
+
 
   const isMatch = closedSym => (closed.includes(closedSym) && 
         closed.indexOf(closedSym) === opened.indexOf(closedSym));
+
+
+  // not right yet...  had to break for training...
+  inputArr.forEach( character => { if (closed.includes(character)) return isMatch(charcter) && inputArr[inputArr.indexOf(character)-1] === opened[opened.indexOf(character)] })
 
 
 
