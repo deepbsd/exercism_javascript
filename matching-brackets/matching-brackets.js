@@ -8,11 +8,13 @@
 
 
 
-export const matchingBrackets = (string) => {
+//export const matchingBrackets = (string) => {
+const matchingBrackets = (string) => {
   let opened = ['{','[','('] ;
   let closed = ['}',']',')'] ;
   let toMatch = [];
   let inputArr = string.split("");
+
 
   // Last in must be first matched to be true, otherwise return false
   inputArr.forEach( character => {  if (opened.includes(character)) toMatch.push(character) });
@@ -22,9 +24,26 @@ export const matchingBrackets = (string) => {
         closed.indexOf(closedSym) === opened.indexOf(closedSym));
 
 
-  // not right yet...  had to break for training...
-  inputArr.forEach( character => { if (closed.includes(character)) return isMatch(charcter) && inputArr[inputArr.indexOf(character)-1] === opened[opened.indexOf(character)] })
+
+  // Do the checking
+  inputArr.forEach( character => { 
+    let result;
+    if (closed.includes(character)) {
+        isMatch(character) && 
+        inputArr[inputArr.indexOf(character)-1] === opened[opened.indexOf(character)] 
+        result = true;
+    } else {
+        result = false;
+    }
+    return result; 
+  })
+
 
 
 
 };
+
+
+let testString = '{}';
+let result = matchingBrackets(testString);
+console.log(result)
