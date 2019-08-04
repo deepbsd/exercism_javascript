@@ -1,19 +1,16 @@
-
-const largestProduct = (numstring, length) => {
-//export const largestProduct = (numstring, length) => {
+export const largestProduct = (numstring, length) => {
+    if (numstring.length < length ) throw 'Slice size is too big.'
+    if (length===0 || numstring==='') return 1
     let numArr = numstring.split('').map(val => parseInt(val,10),0);
-    let start = 0; let end = length;
-    let slice = numArr.slice(start,end)
-    let product
-    let largestProduct = 0
-    while (slice !== numArr.slice(numArr.length-length,numArr.length)){
-        product = slice.reduce( (total, curval, curIndex) => curval * total, 1)
-        console.log(product)
+    let product, largestProduct = 0
+
+    for (let i=0; i<numArr.length-length+1; i++){
+        if (isNaN(numArr[i]) || length < 0 ) throw 'Invalid input.'
+        let slice = numArr.slice(i,i+length)
+        if (! slice.includes(0)) product = slice.reduce( (total, val) => total*val )
         if (product>largestProduct) largestProduct = product
-        slice = numArr.slice(start+length,end+length)
     }
-    console.log(largestProduct)
+
+    return largestProduct;
 };
 
-
-largestProduct('345123', 3)

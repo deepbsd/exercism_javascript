@@ -5,15 +5,15 @@ describe('Series', () => {
     expect(largestProduct('0123456789', 2)).toBe(72);
   });
 
-  xtest('works for a tiny number', () => {
+  test('works for a tiny number', () => {
     expect(largestProduct('19', 2)).toBe(9);
   });
 
-  xtest('can get the largest product of 3', () => {
+  test('can get the largest product of 3', () => {
     expect(largestProduct('1027839564', 3)).toBe(270);
   });
 
-  xtest('can get the largest product of a big number', () => {
+  test('can get the largest product of a big number', () => {
     const largeNumber = '73167176531330624919225119674426574742355349194934969835203127745063262395783180169848018694788'
       + '51843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648'
       + '95044524452316173185640309871112172238311362229893423380308135336276614282806444486645238749303589072962904915604'
@@ -26,41 +26,41 @@ describe('Series', () => {
     expect(largestProduct(largeNumber, 13)).toBe(23514624000);
   });
 
-  xtest('returns 0 if all digits are zero', () => {
+  test('returns 0 if all digits are zero', () => {
     expect(largestProduct('0000', 2)).toBe(0);
   });
 
-  xtest('returns 0 if all spans contain zero', () => {
+  test('returns 0 if all spans contain zero', () => {
     expect(largestProduct('99099', 3)).toBe(0);
   });
 
-  xtest('rejects invalid character in input', () => {
+  test('rejects invalid character in input', () => {
     expect(() => {
       largestProduct('1234a5', 2);
     }).toThrow(new Error('Invalid input.'));
   });
 
-  xtest('rejects negative span', () => {
+  test('rejects negative span', () => {
     expect(() => {
       largestProduct('12345', -1);
     }).toThrow(new Error('Invalid input.'));
   });
 
-  xtest('returns 1 for empty string and zero slice length', () => {
+  test('returns 1 for empty string and zero slice length', () => {
     expect(largestProduct('', 0)).toBe(1);
   });
 
-  xtest('returns 1 for non-empty string and zero slice length', () => {
+  test('returns 1 for non-empty string and zero slice length', () => {
     expect(largestProduct('123', 0)).toBe(1);
   });
 
-  xtest('throws an error for slices bigger than the number', () => {
+  test('throws an error for slices bigger than the number', () => {
     expect(() => {
       largestProduct('123', 4);
     }).toThrow(new Error('Slice size is too big.'));
   });
 
-  xtest('throws an error for empty string and non-zero slice length', () => {
+  test('throws an error for empty string and non-zero slice length', () => {
     expect(() => {
       largestProduct('', 1);
     }).toThrow(new Error('Slice size is too big.'));
