@@ -22,14 +22,22 @@ export class Say {
         if (s2 <= 20) s2 = up2_20[s2]
         else if (s2 > 20) s2 = twenty_to_100(s2.toString())
 
-        console.log("S2: ",s2)
-
-        if ([100, 200, 300, 400, 500, 600, 700, 800, 900].includes(num)){
-            return `${up2_20[+s1]} hundred`
-        } else {
-            return `${up2_20[s1]} hundred ${s2}`
-        }
+        if ([100, 200, 300, 400, 500, 600, 700, 800, 900].includes(num)) return `${up2_20[+s1]} hundred`
+        else  return `${up2_20[s1]} hundred ${s2}`
     }
+
+    // lots more to do on this.  Start here!!
+    const thousands = (num) => {
+        let s1 = num.slice(0,1)
+        let s2 = num.slice(1,3)
+
+        if (s2 <= 20) s2 = up2_20[s2]
+        else if (s2 > 20) s2 = twenty_to_100(s2.toString())
+
+        if ([100, 200, 300, 400, 500, 600, 700, 800, 900].includes(num)) return `${up2_20[+s1]} hundred`
+        else  return `${up2_20[s1]} hundred ${s2}`
+    }
+
 
 
 
@@ -37,6 +45,7 @@ export class Say {
         if (num <= 20) return up2_20[num]
         if (num >= 20 && num <= 100) return twenty_to_100(num.toString()) 
         if (num >= 100 && num < 1000) return hundreds(num.toString()) 
+        if (num >= 1000 && num < 1000000) return thousands(num.toString()) 
     }
 
 
