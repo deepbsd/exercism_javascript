@@ -6,19 +6,19 @@ describe('say', () => {
     expect(say.inEnglish(0)).toBe('zero');
   });
 
-  xtest('one', () => {
+  test('one', () => {
     expect(say.inEnglish(1)).toBe('one');
   });
 
-  xtest('fourteen', () => {
+  test('fourteen', () => {
     expect(say.inEnglish(14)).toBe('fourteen');
   });
 
-  xtest('twenty', () => {
+  test('twenty', () => {
     expect(say.inEnglish(20)).toBe('twenty');
   });
 
-  xtest('twenty-two', () => {
+  test('twenty-two', () => {
     expect(say.inEnglish(22)).toBe('twenty-two');
   });
 
