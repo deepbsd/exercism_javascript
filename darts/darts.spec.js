@@ -8,7 +8,7 @@ describe('Return the correct amount earned by a dart landing in a given point in
     expect(solve(x, y)).toEqual(expected);
   });
 
-  xtest('A dart lands just in the border of the target', () => {
+  test('A dart lands just in the border of the target', () => {
     const x = 0;
     const y = 10;
     const expected = 1;
