@@ -17,19 +17,19 @@ export class Say {
 
     const hundreds = (num) => {
         let s1 = num.slice(0,1)
-        let s2 = num.slice(1,2)
+        let s2 = num.slice(1,3)
 
         if (s2 <= 20) s2 = twenty_100[s2]
         else if (s2 > 20) s2 = twenty_to_100(s2)
 
-        if num in [100, 200, 300, 400, 500, 600, 700, 800, 900]:
-            return "{} hundred".format(up2_20[s1])
-        else:
-            return "{} hundred and {}".format(up2_20[s1], s2)
-
-
-
+        if ([100, 200, 300, 400, 500, 600, 700, 800, 900].includes(num)){
+            return `${up2_20[+s1]} hundred`
+        } else {
+            return `${up2_20[+s1]} hundred and ${s2}`
+        }
     }
+
+
 
     const callit = (num) => {
         if (num <= 20) return up2_20[num]
