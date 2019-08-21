@@ -22,7 +22,7 @@ describe('say', () => {
     expect(say.inEnglish(22)).toBe('twenty-two');
   });
 
-  xtest('one hundred', () => {
+  test('one hundred', () => {
     expect(say.inEnglish(100)).toBe('one hundred');
   });
 

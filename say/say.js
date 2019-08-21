@@ -22,8 +22,8 @@ export class Say {
         if (s2 <= 20) s2 = up2_20[s2]
         else if (s2 > 20) s2 = twenty_to_100(s2.toString())
 
-        if ([100, 200, 300, 400, 500, 600, 700, 800, 900].includes(num)) return `${up2_20[+s1]} hundred`
-        else  return `${up2_20[s1]} hundred ${s2}`
+        if ([100, 200, 300, 400, 500, 600, 700, 800, 900].includes(num)) return `${up2_20[s1]} hundred`
+        else  return `${up2_20[+s1]} hundred ${s2}`
     }
 
     // lots more to do on this.  Start here!!
