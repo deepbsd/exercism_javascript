@@ -30,11 +30,11 @@ describe('say', () => {
     expect(say.inEnglish(123)).toBe('one hundred twenty-three');
   });
 
-  xtest('one thousand', () => {
+  test('one thousand', () => {
     expect(say.inEnglish(1000)).toBe('one thousand');
   });
 
-  xtest('one thousand two hundred thirty-four', () => {
+  test('one thousand two hundred thirty-four', () => {
     expect(say.inEnglish(1234)).toBe('one thousand two hundred thirty-four');
   });
 
