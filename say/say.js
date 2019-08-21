@@ -52,14 +52,28 @@ export class Say {
         return `${s1} million ${s2}`
     }
 
+    const billions = (num) => {
+        let s1 = num.slice(0,-9)
+        let s2 = num.slice(-9)
+
+        if (s1 <= 20) s1 = up2_20[+s1]
+        else if (s1 > 20) s1 = callit(+s1)
+
+        if ([1000000000, 2000000000, 3000000000, 4000000000, 5000000000, 6000000000, 7000000000, 8000000000, 9000000000].includes(+num)) return `${s1} billion`
+
+        s2 = callit(+s2)
+        return `${s1} billion ${s2}`
+    }
 
 
     const callit = (num) => {
+        if (num >= 1000000000000 || num < 0) throw ("Number must be between 0 and 999,999,999,999.")
         if (num <= 20) return up2_20[num]
         if (num >= 20 && num < 100) return twenty_to_100(num.toString()) 
         if (num >= 100 && num < 1000) return hundreds(num.toString()) 
         if (num >= 1000 && num < 1000000) return thousands(num.toString()) 
         if (num >= 1000000 && num < 1000000000) return millions(num.toString()) 
+        if (num >= 1000000000 && num < 1000000000000) return billions(num.toString()) 
     }
 
 
