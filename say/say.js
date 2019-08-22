@@ -1,8 +1,3 @@
-//
-// This is only a SKELETON file for the 'Say' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export class Say {
   inEnglish(number) {
     const up2_20 = [ 'zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen',
@@ -26,56 +21,30 @@ export class Say {
         else  return `${up2_20[+s1]} hundred ${s2}`
     }
 
-    const thousands = (num) => {
-        let s1 = num.slice(0,-3)
-        let s2 = num.slice(-3)
+    const extender = (num, sliceSize, measurement, multiplier) => {
+        let s1 = num.slice(0,-sliceSize)
+        let s2 = num.slice(-sliceSize)
 
         if (s1 <= 20) s1 = up2_20[+s1]
         else if (s1 > 20) s1 = callit(+s1)
 
-        if ([1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000].includes(+num)) return `${s1} thousand`
+        let evenArray = []
+        for (let i=1; i<=9; i++) evenArray.push(i*multiplier) 
+        if (evenArray.includes(+num)) return `${s1} ${measurement}`
 
         s2 = callit(+s2)
-        return `${s1} thousand ${s2}`
+        return `${s1} ${measurement} ${s2}`
     }
-
-    const millions = (num) => {
-        let s1 = num.slice(0,-6)
-        let s2 = num.slice(-6)
-
-        if (s1 <= 20) s1 = up2_20[+s1]
-        else if (s1 > 20) s1 = callit(+s1)
-
-        if ([1000000, 2000000, 3000000, 4000000, 5000000, 6000000, 7000000, 8000000, 9000000].includes(+num)) return `${s1} million`
-
-        s2 = callit(+s2)
-        return `${s1} million ${s2}`
-    }
-
-    const billions = (num) => {
-        let s1 = num.slice(0,-9)
-        let s2 = num.slice(-9)
-
-        if (s1 <= 20) s1 = up2_20[+s1]
-        else if (s1 > 20) s1 = callit(+s1)
-
-        if ([1000000000, 2000000000, 3000000000, 4000000000, 5000000000, 6000000000, 7000000000, 8000000000, 9000000000].includes(+num)) return `${s1} billion`
-
-        s2 = callit(+s2)
-        return `${s1} billion ${s2}`
-    }
-
 
     const callit = (num) => {
         if (num >= 1000000000000 || num < 0) throw ("Number must be between 0 and 999,999,999,999.")
         if (num <= 20) return up2_20[num]
-        if (num >= 20 && num < 100) return twenty_to_100(num.toString()) 
+        if (num > 20 && num < 100) return twenty_to_100(num.toString()) 
         if (num >= 100 && num < 1000) return hundreds(num.toString()) 
-        if (num >= 1000 && num < 1000000) return thousands(num.toString()) 
-        if (num >= 1000000 && num < 1000000000) return millions(num.toString()) 
-        if (num >= 1000000000 && num < 1000000000000) return billions(num.toString()) 
+        if (num >= 1000 && num < 1000000) return extender(num.toString(), 3, 'thousand', 1000) 
+        if (num >= 1000000 && num < 1000000000) return extender(num.toString(), 6, 'million',1000000) 
+        if (num >= 1000000000 && num < 1000000000000) return extender(num.toString(), 9, 'billion', 1000000000) 
     }
-
 
     return callit(number)    
   }
