@@ -1,5 +1,5 @@
-//export const recite = (number) => {
-const recite = (number) => {
+export const recite = (start,end) => {
+//const recite = (start,end) => {
 
     const days = ["first", "second", "third", "fourth","fifth", "sixth","seventh",
             "eighth", "ninth", "tenth", "eleventh", "twelfth"]
@@ -19,18 +19,23 @@ const recite = (number) => {
             "twelve Drummers Drumming",
             ]
 
-    let result = [], verse = ''
+    let result = '', verse = ''
 
-    for (daynum of [0,...Array(number-1)].map( (_,i) => i)){
+    end = end ? end : end+1
+
+    // make end work in here...
+    // Also, get commas right...  those aren't working yet...
+    for (let daynum of [...Array(start)].map( (_,i) => i)){
         let day = days[daynum]
         let refrain = `On the ${day} day of Christmas my true love gave to me: `
-        if (day == "first") verse = refrain + "".concat(gifts[daynum]).replace("and ","") + "."
-        else verse = refrain + ", ".concat(gifts[daynum]) + "."
+        if (day == "first") verse = refrain + "".concat(gifts.slice(0,daynum+1).reverse()).replace("and ","") + ".\n"
+        else verse = refrain.concat(gifts.slice(0,daynum+1).reverse()) + "."
         result += verse
+        console.log("result:",result)
     }
     return result
 
 };
 
 
-console.log( recite(4) )
+//console.log( recite(4) )

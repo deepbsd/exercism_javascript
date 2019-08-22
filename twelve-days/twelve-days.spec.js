@@ -7,7 +7,7 @@ describe('TwelveDays', () => {
     expect(recite(1)).toEqual(expectedVerseOne);
   });
 
-  xtest('test verse second day two turtle doves', () => {
+  test('test verse second day two turtle doves', () => {
     const expectedVerseTwo =
       'On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree.\n';
     expect(recite(2)).toEqual(expectedVerseTwo);
