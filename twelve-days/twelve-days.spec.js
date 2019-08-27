@@ -10,6 +10,7 @@ describe('TwelveDays', () => {
   test('test verse second day two turtle doves', () => {
     const expectedVerseTwo =
       'On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree.\n';
+    console.log(recite(2))
     expect(recite(2)).toEqual(expectedVerseTwo);
   });
 

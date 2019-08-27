@@ -19,7 +19,7 @@ export const recite = (start,end=start) => {
             " twelve Drummers Drumming",
             ]
 
-    let result = '', verse = ''
+    let result = [], verse = '';
 
 
     for (let daynum of [...Array(start)].map( (_,i) => i)){
@@ -27,10 +27,10 @@ export const recite = (start,end=start) => {
         let refrain = `On the ${day} day of Christmas my true love gave to me:`
         if (day == "first") verse = refrain + "".concat(gifts.slice(0,daynum+1).reverse()).replace("and ", "") + ".\n"
         else verse = refrain.concat(gifts.slice(0,daynum+1).reverse()) + "."
-        result += verse
-        //console.log("result:",result)
+        result.push(verse)
     }
-    return result
+    //console.log(result[start-1])
+    return result[start-1]
 
 };
 
