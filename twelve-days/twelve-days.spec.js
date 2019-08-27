@@ -10,17 +10,17 @@ describe('TwelveDays', () => {
   test('test verse second day two turtle doves', () => {
     const expectedVerseTwo =
       'On the second day of Christmas my true love gave to me: two Turtle Doves, and a Partridge in a Pear Tree.\n';
-    console.log(recite(2))
+    console.log(expectedVerseTwo+recite(2))
     expect(recite(2)).toEqual(expectedVerseTwo);
   });
 
-  xtest('test verse third day three french hens', () => {
+  test('test verse third day three french hens', () => {
     const expectedVerseThree =
       'On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n';
     expect(recite(3)).toEqual(expectedVerseThree);
   });
 
-  xtest('test verse fourth day four calling birds', () => {
+  test('test verse fourth day four calling birds', () => {
     const expectedVerseFour =
       'On the fourth day of Christmas my true love gave to me: four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.\n';
     expect(recite(4)).toEqual(expectedVerseFour);
