@@ -1,10 +1,9 @@
-import { recite } from './twelve-days-1.js';
+import { recite } from './twelve-days.js';
 
 describe('TwelveDays', () => {
   test('test verse first day a partridge in a pear tree', () => {
     const expectedVerseOne =
       'On the first day of Christmas my true love gave to me: a Partridge in a Pear Tree.\n';
-    //console.log(expectedVerseOne+recite(1))
     expect(recite(1)).toEqual(expectedVerseOne);
   });
 
