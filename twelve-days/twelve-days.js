@@ -46,6 +46,8 @@ export const recite = (start,end=start) => {
         final += makeverse(versenum)
     }
 
+    final += makeverse(start)
+
     console.log("final: ",final)
 
     return final
